@@ -27,4 +27,4 @@ aws iot describe-endpoint > /tmp/iotendpoint.json
 iot_endpoint=$(jq -r ".endpointAddress" /tmp/iotendpoint.json)
 # run pub/sub sample app using certificates downloaded in package
 printf "\nRunning truck sensor sample application...\n"
-python3 ~/trucksensor.py -p ~/trucksensordata.csv -e $iot_endpoint -r ~/rootCA.pem -c /greengrass/v2/thingCert.crt -k /greengrass/v2/privKey.key -t iot-device-data -d 2 -l True -i core-device-thing-name
+python3 /home/ec2-user/trucksensor.py -p /home/ec2-user/trucksensordata.csv -e $iot_endpoint -r /home/ec2-user/rootCA.pem -c /greengrass/v2/thingCert.crt -k /greengrass/v2/privKey.key -t data/iot-device-data -d 2 -l True -i core-device-thing-name
